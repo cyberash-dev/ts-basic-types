@@ -35,28 +35,15 @@ if (isPrimitive(value)) {
 }
 ```
 
-### PlainObject<T>
+### PlainObject
 
-A recursive utility type that ensures an object contains only primitive values or other plain objects. Useful for defining JSON-serializable objects or configuration objects.
-
-```typescript
-import type { PlainObject } from 'ts-basic-types';
-```
+A recursive utility type that represents an object containing only primitive values or other plain objects. Useful for defining JSON-serializable objects or configuration objects.
 
 **Usage examples:**
 
 ```typescript
 // Valid plain object
-type Config = PlainObject<{
-  name: string;
-  port: number;
-  features: {
-    enabled: boolean;
-    timeout: number;
-  };
-}>;
-
-const config: Config = {
+const config: PlainObject = {
   name: "myapp",
   port: 3000,
   features: {
@@ -65,12 +52,13 @@ const config: Config = {
   }
 }; // ✅ Valid
 
-// Invalid - contains non-primitive values
-type InvalidConfig = PlainObject<{
-  name: string;
-  handler: () => void; // ❌ Functions are not allowed
-  date: Date; // ❌ Date objects are not allowed
-}>;
+// These would cause TypeScript errors:
+const invalidConfig: PlainObject = {
+  name: "myapp",
+  handler: () => console.log("hello"), // ❌ Functions are not allowed
+  date: new Date(), // ❌ Date objects are not allowed
+  array: [1, 2, 3] // ❌ Arrays are not allowed
+};
 ```
 
 **Use cases:**
