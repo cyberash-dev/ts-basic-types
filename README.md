@@ -1,11 +1,11 @@
-# ts-useful-types
+# ts-basic-types
 
-A collection of useful TypeScript utility types for everyday development.
+A collection of basic TypeScript utility types for everyday development.
 
 ## Installation
 
 ```bash
-npm install ts-useful-types
+npm install ts-basic-types
 ```
 
 ## Types
@@ -13,6 +13,12 @@ npm install ts-useful-types
 ### Primitive
 
 Represents all primitive JavaScript/TypeScript types.
+
+```typescript
+import type { Primitive } from 'ts-basic-types/types/Primitive';
+
+type Primitive = string | number | bigint | symbol | boolean | null | undefined;
+```
 
 **Usage examples:**
 
@@ -32,6 +38,10 @@ if (isPrimitive(value)) {
 ### PlainObject<T>
 
 A recursive utility type that ensures an object contains only primitive values or other plain objects. Useful for defining JSON-serializable objects or configuration objects.
+
+```typescript
+import type { PlainObject } from 'ts-basic-types';
+```
 
 **Usage examples:**
 
