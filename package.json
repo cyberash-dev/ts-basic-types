@@ -1,0 +1,29 @@
+{
+  "name": "ts-useful-types",
+  "version": "0.0.1",
+  "description": "A collection of useful TypeScript utility types for everyday development",
+  "main": "index.d.ts",
+  "types": "index.d.ts",
+  "keywords": [
+    "typescript",
+    "types",
+    "utility-types",
+    "type-definitions",
+    "primitives",
+    "plain-object"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "index.d.ts",
+    "types/",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyberash-dev/ts-useful-types"
+  }
+}
