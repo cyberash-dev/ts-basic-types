@@ -14,12 +14,6 @@ npm install ts-basic-types
 
 Represents all primitive JavaScript/TypeScript types.
 
-```typescript
-import type { Primitive } from 'ts-basic-types/types/Primitive';
-
-type Primitive = string | number | bigint | symbol | boolean | null | undefined;
-```
-
 **Usage examples:**
 
 ```typescript
@@ -37,7 +31,7 @@ if (isPrimitive(value)) {
 
 ### PlainObject
 
-A recursive utility type that represents an object containing only primitive values or other plain objects. Useful for defining JSON-serializable objects or configuration objects.
+A recursive utility type that represents an object containing only primitive values, other plain objects, or arrays of any nesting level. Useful for defining JSON-serializable objects or configuration objects.
 
 **Usage examples:**
 
@@ -49,7 +43,14 @@ const config: PlainObject = {
   features: {
     enabled: true,
     timeout: 5000
-  }
+  },
+  tags: ["web", "api", "server"], // ✅ Arrays are now supported
+  matrix: [[1, 2], [3, 4]], // ✅ Nested arrays are supported
+  mixed: [
+    { id: 1, active: true },
+    { id: 2, active: false }
+  ], // ✅ Arrays of objects are supported
+  deepNested: [[[{ value: 42 }]]] // ✅ Deep nesting is supported
 }; // ✅ Valid
 
 // These would cause TypeScript errors:
@@ -57,7 +58,7 @@ const invalidConfig: PlainObject = {
   name: "myapp",
   handler: () => console.log("hello"), // ❌ Functions are not allowed
   date: new Date(), // ❌ Date objects are not allowed
-  array: [1, 2, 3] // ❌ Arrays are not allowed
+  symbols: [Symbol("test")] // ❌ Non-primitive values in arrays are not allowed
 };
 ```
 
